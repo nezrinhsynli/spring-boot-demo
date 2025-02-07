@@ -34,6 +34,10 @@ public class StudentServiceImpl implements IStudentService {
     public List<StudentResponse> getAllStudents() {
         List<Student> students = studentRepository.findAll();
 
+        if(students.isEmpty()){
+            throw new StudentNotFoundException(ErrorCodeEnum.NO_RECORD_EXIST.getMessage());
+        }
+
         List<StudentResponse> studentResponses = new ArrayList<>();
 
         for (Student student : students) {
