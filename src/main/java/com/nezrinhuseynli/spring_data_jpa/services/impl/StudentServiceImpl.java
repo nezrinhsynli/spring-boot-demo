@@ -34,7 +34,7 @@ public class StudentServiceImpl implements IStudentService {
     public List<StudentResponse> getAllStudents() {
         List<Student> students = studentRepository.findAll();
 
-        if(students.isEmpty()){
+        if (students.isEmpty()) {
             throw new StudentNotFoundException(ErrorCodeEnum.NO_RECORD_EXIST.getMessage());
         }
 
@@ -61,7 +61,7 @@ public class StudentServiceImpl implements IStudentService {
     @Override
     public StudentResponse getStudentByNameAndSurname(String firstName, String lastName) {
 
-        if(studentRepository.getStudentByNameAndSurname(firstName, lastName)==null){
+        if (studentRepository.getStudentByNameAndSurname(firstName, lastName) == null) {
             throw new StudentNotFoundException(ErrorCodeEnum.NO_RECORD_EXIST.getMessage());
         }
         Student student = studentRepository.getStudentByNameAndSurname(firstName, lastName);
@@ -81,12 +81,13 @@ public class StudentServiceImpl implements IStudentService {
             BeanUtils.copyProperties(studentRequest, student);
 
             studentRepository.save(student);
+        }else {
+            throw new StudentNotFoundException(ErrorCodeEnum.NO_RECORD_EXIST.getMessage());
         }
     }
 
     @Override
     public void deleteStudent(Long id) {
-
         studentRepository.deleteById(id);
     }
 
@@ -95,6 +96,8 @@ public class StudentServiceImpl implements IStudentService {
         BeanUtils.copyProperties(student, studentResponse);
         return studentResponse;
     }
+
+
 
 
 }

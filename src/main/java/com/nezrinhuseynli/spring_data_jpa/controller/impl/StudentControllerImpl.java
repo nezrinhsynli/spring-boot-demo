@@ -24,7 +24,7 @@ public class StudentControllerImpl implements IStudentController {
         studentService.saveStudent(studentRequest);
         return BaseResponse.getSuccessMessage();
     }
-
+    
     @GetMapping(path = "/get-students")
     @Override
     public List<StudentResponse> getAllStudents() {

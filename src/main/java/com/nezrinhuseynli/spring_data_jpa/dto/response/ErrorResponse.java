@@ -9,20 +9,11 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ErrorResponse {
+public class ErrorResponse<T> {
 
-    private Integer errorCode;
-    private String message;
     private LocalDateTime timestamp;
     private Integer status;
+    private Integer errorCode;
+    private T message;
 
-    @Override
-    public String toString() {
-        return "ErrorResponse{" +
-                "errorCode=" + errorCode +
-                ", message='" + message + '\'' +
-                ", timestamp=" + timestamp +
-                ", status=" + status +
-                '}';
-    }
 }
