@@ -15,7 +15,7 @@ public interface IStudentController {
 
     StudentResponse getStudentById(Long id);
 
-    StudentResponse getStudentByNameAndSurname(@RequestParam String firstName, @RequestParam String lastName);
+    StudentResponse getStudentByNameAndSurname(String firstName, String lastName);
 
     BaseResponse updateStudent(Long id, StudentRequest studentRequest);
 
